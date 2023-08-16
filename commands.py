@@ -12,3 +12,8 @@ def token_balance(address: str) -> float:
     json_response = json.loads(response)
     balance = json_response["result"]["value"][0]["account"]["data"]["parsed"]["info"]["tokenAmount"]["uiAmount"]
     return(balance)
+
+def sol_balance():
+    balance_response = client.get_balance(payout_address).value
+    balance_response = balance_response / (10**9)
+    return(balance_response)
