@@ -36,6 +36,7 @@ async def support(ctx):
                           timestamp=datetime.now())
     embed.add_field(name="!update", value="Displays the $SOL, $USDC, and $USDT balance of the accrual wallet.", inline=False)
     embed.add_field(name="!house", value="Displays the $SOL, $USDC, and $USDT balance of the house pool.", inline=False)
+    embed.add_field(name="!market", value="Displays the floor price, average sale, and total volume of the Divvy collection.", inline=False)
     embed.add_field(name="!support", value="Displays more information on the available commands.", inline=False)
     embed.set_footer(text="Powered by bigweavers")
     await ctx.send(embed=embed)
