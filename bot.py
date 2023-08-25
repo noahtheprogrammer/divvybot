@@ -54,6 +54,21 @@ async def house(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
+async def staking(ctx, args):
+    counters = find_pass_count(args)
+    revenue = token_balance(accrual, usdc[1])
+    revenue = revenue + token_balance(accrual, usdt[1])
+    embed = discord.Embed(title="Divvy Staking",
+                          url="https://app.divvy.bet/staking/",
+                          description="Divvy staking information and estimated wallet revenue can be viewed below. This information is pulled directly from Solscan.",
+                          timestamp=datetime.now())
+    embed.add_field(name="Owned Passes", value=counters[0], inline=True)
+    embed.add_field(name="Staked Passes", value=counters[1], inline=True)
+    embed.add_field(name="Estimated Revenue", value=f"${revenue/2500 * counters[1]}", inline=False)
+    embed.set_footer(text="Powered by bigweavers")
+    await ctx.send(embed=embed)
+
+@bot.command()
 async def market(ctx):
     data = requests.get("https://api-mainnet.magiceden.dev/v2/collections/dvypass/stats")
     collection = data.json()
