@@ -6,7 +6,6 @@ from solana.rpc.types import TokenAccountOpts
 
 client = Client("https://api.mainnet-beta.solana.com/")
 
-
 # Public address string created using accrual wallet address
 accrual = "3D3whwTbRYzr2b6yY8hXE6EVGRJVGYyGC7jFrTxHVhbK"
 
@@ -32,8 +31,11 @@ def sol_balance(address: str):
 def find_pass_count(address: str):
     response = client.get_token_accounts_by_owner_json_parsed(Pubkey.from_string(address), TokenAccountOpts(program_id = Pubkey.from_string("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"))).to_json()
     json_response = json.loads(response)
+    hashlist = json.load(open("hashlist.json"))
     token_count = len(json_response["result"]["value"])
-    print(token_count)
-
-# Test value until further notice
-find_pass_count("9P8zVyaaA1rgqWjZ7hCG5w1BxL94Q248ozqyy88HQpCn")
+    pass_count = 0
+    for i in range(token_count):
+        mint = json_response["result"]["value"][i]["account"]["data"]["parsed"]["info"]["mint"]
+        if mint in hashlist:
+            pass_count = pass_count + 1
+    return pass_count
