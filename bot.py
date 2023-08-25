@@ -37,7 +37,17 @@ async def support(ctx):
     embed.add_field(name="!update", value="Displays the $SOL, $USDC, and $USDT balance of the accrual wallet.", inline=False)
     embed.add_field(name="!house", value="Displays the $SOL, $USDC, and $USDT balance of the house pool.", inline=False)
     embed.add_field(name="!market", value="Displays the floor price, average sale, and total volume of the Divvy collection.", inline=False)
-    embed.add_field(name="!support", value="Displays more information on the available commands.", inline=False)
+    embed.add_field(name="!staking `address`", value="Displays staking information and estimated revenue for the given wallet address.", inline=False)
+    embed.add_field(name="!donate", value="Displays the donation address of the creator.", inline=False)
+    embed.set_footer(text="Powered by bigweavers")
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def donate(ctx):
+    embed = discord.Embed(title="Donations",
+                          description="Below is the donation address for the creator of Divvybot. Buy him a coffee please!",
+                          timestamp=datetime.now())
+    embed.add_field(name="Wallet Address", value="9P8zVyaaA1rgqWjZ7hCG5w1BxL94Q248ozqyy88HQpCn", inline=False)
     embed.set_footer(text="Powered by bigweavers")
     await ctx.send(embed=embed)
 
