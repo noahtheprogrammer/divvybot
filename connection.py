@@ -28,3 +28,12 @@ def sol_balance(address: str):
     balance_response = client.get_balance(Pubkey.from_string(address)).value
     balance_response = balance_response / (10**9)
     return(balance_response)
+
+def find_pass_count(address: str):
+    response = client.get_token_accounts_by_owner_json_parsed(Pubkey.from_string(address), TokenAccountOpts(program_id = Pubkey.from_string("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"))).to_json()
+    json_response = json.loads(response)
+    token_count = len(json_response["result"]["value"])
+    print(token_count)
+
+# Test value until further notice
+find_pass_count("9P8zVyaaA1rgqWjZ7hCG5w1BxL94Q248ozqyy88HQpCn")
