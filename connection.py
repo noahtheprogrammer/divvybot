@@ -46,5 +46,3 @@ def find_pass_count(address: str) -> list:
             if info["state"] == "frozen":
                 staked_passes = staked_passes + 1
     return [passes, staked_passes]
-
-find_pass_count("9P8zVyaaA1rgqWjZ7hCG5w1BxL94Q248ozqyy88HQpCn")
