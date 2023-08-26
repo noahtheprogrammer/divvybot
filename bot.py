@@ -74,7 +74,7 @@ async def staking(ctx, args):
                           timestamp=datetime.now())
     embed.add_field(name="Owned Passes", value=counters[0], inline=True)
     embed.add_field(name="Staked Passes", value=counters[1], inline=True)
-    embed.add_field(name="Estimated Revenue", value=f"${revenue/2500 * counters[1]}", inline=False)
+    embed.add_field(name="Estimated Revenue", value=f"${round(revenue/2500 * counters[1], 2)}", inline=False)
     embed.set_footer(text="Powered by bigweavers")
     await ctx.send(embed=embed)
 
