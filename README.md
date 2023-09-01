@@ -15,6 +15,11 @@ Open the installation folder and create a environment file with the following co
 DISCORD_TOKEN=YOURDISCORDTOKEN
 ALCHEMY_API=YOURALCHEMYKEY
 ```
+Next, install the dependencies for Divvybot by opening Python and running the following command. This will install automatically install the required modules and their respective versions.
+```
+python -m pip install -r requirements.txt
+```
+If Divvybot is unable to open after following the installation process, try restarting your machine, as Python occassionally requires a reboot in order to successfully import modules.
 
 ### Commands
 A chart of Divvybot's available commands can be viewed below.
